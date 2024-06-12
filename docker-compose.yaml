@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: test-nest
+  app:
+    image: nest-pg-docker
+    ports:
+      - "8080:8080"
+    environment:
+      SERVER_PORT: 8080
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: test-nest
+      DB_USERNAME: postgres
+      DB_PASSWORD: root

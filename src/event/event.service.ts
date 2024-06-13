@@ -18,17 +18,6 @@ export class EventService {
     private readonly jwtService: JwtService,
   ) {}
 
-  // private getUserIdFromToken(token: string) {
-  //   try {
-  //     const decodedToken = this.jwtService.decode(token);
-  //     console.log('@decoded token', decodedToken);
-  //     return { userId: decodedToken.userId };
-  //   } catch (e) {
-  //     console.log('catch error: ', e);
-  //     throw new Error('Invalid token');
-  //   }
-  // }
-
   async create(createEventDto: CreateEventDto, token: string) {
     const userId = getUserIdFromToken(token, this.jwtService).userId;
     const newEvent = this.eventRepository.create({
